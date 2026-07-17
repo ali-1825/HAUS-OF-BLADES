@@ -174,8 +174,9 @@
   .hero-main{
     flex:1;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     width:100%;
+    padding-top:clamp(8px, 4vh, 52px);
   }
   .hero-content{
     display:flex;
@@ -190,6 +191,7 @@
     font-size:1.875rem;
     line-height:0.95;
     letter-spacing:1px;
+    margin:0 0 clamp(20px, 3vh, 36px);
   }
   .hero h1 em{font-style:normal; color:var(--ember-bright); letter-spacing:1px;}
   .hero p.sub{
@@ -285,8 +287,9 @@
   /* lg — desktop 1024px+ */
   @media (min-width: 1024px){
     .hero{background-position:right center;}
+    .hero-main{padding-top:clamp(16px, 5vh, 56px);}
     .hero-content{max-width:600px; gap:clamp(24px, 3vh, 38px);}
-    .hero h1{font-size:clamp(4rem, 5.5vw, 5.5rem); line-height:0.90; letter-spacing:0.02em;}
+    .hero h1{font-size:clamp(4rem, 5.5vw, 5.5rem); line-height:0.90; letter-spacing:0.02em; margin-bottom:clamp(24px, 3.5vh, 40px);}
     .hero p.sub{font-size:17px; max-width:440px;}
     .hero-actions{gap:14px;}
   }
@@ -320,7 +323,7 @@
       gap:32px;
       padding-bottom:28px;
     }
-    .hero-main{align-items:flex-start; padding-top:12px;}
+    .hero-main{align-items:flex-start; padding-top:8px;}
     .hero-content{max-width:100%;}
     .hero-stats > div{padding-right:1.75rem;}
     .hero-stats > div + div{padding-left:1.75rem; padding-right:1.75rem;}
