@@ -186,17 +186,6 @@
     max-width:580px;
   }
   .hero-copy{text-align:left; width:100%;}
-  .hero .eyebrow{
-    font-size:11px;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--ember-bright);
-    margin-bottom:0;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .hero .eyebrow::before{content:''; width:28px; height:1px; background:var(--ember-bright); flex-shrink:0;}
   .hero h1{
     font-size:1.875rem;
     line-height:0.95;
@@ -243,11 +232,7 @@
   .btn-ghost:hover{border-color:var(--steel-light); background:rgba(238,230,214,0.04);}
 
   .hero-bottom-row{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
     width:100%;
-    gap:24px;
   }
   .hero-stats{
     display:flex;
@@ -286,45 +271,6 @@
     line-height:1.35;
   }
 
-  .hero-watermark{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-    opacity:0.55;
-    text-align:center;
-    flex-shrink:0;
-    padding-bottom:4px;
-  }
-  .hero-watermark .wm-logo{
-    width:72px;
-    height:72px;
-    border-radius:50%;
-    border:1px solid rgba(238,230,214,0.15);
-    overflow:hidden;
-    background:rgba(12,10,9,0.4);
-  }
-  .hero-watermark .wm-logo img{width:100%; height:100%; object-fit:cover;}
-  .hero-watermark .wm-title{
-    font-family:'Source Serif 4', serif;
-    font-size:15px;
-    letter-spacing:0.06em;
-    color:var(--bone-dim);
-    display:block;
-    line-height:1.2;
-  }
-  .hero-watermark .wm-sub{
-    font-size:9px;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--steel);
-    display:block;
-    margin-top:4px;
-  }
-
-  @media (max-width: 1024px){
-    .hero-watermark{display:none;}
-  }
   @media (min-width: 640px){
     .hero h1{font-size:2rem;}
     .hero p.sub{font-size:16px;}
@@ -334,23 +280,15 @@
   /* md — tablet 768px+ */
   @media (min-width: 768px){
     .hero h1{font-size:clamp(2.75rem, 5vw, 3.5rem);}
-    .hero .eyebrow{font-size:12px; letter-spacing:0.24em;}
-    .hero-watermark .wm-logo{width:80px; height:80px;}
   }
 
   /* lg — desktop 1024px+ */
   @media (min-width: 1024px){
     .hero{background-position:right center;}
-    .hero-watermark{display:flex;}
     .hero-content{max-width:600px; gap:clamp(24px, 3vh, 38px);}
     .hero h1{font-size:clamp(4rem, 5.5vw, 5.5rem); line-height:0.90; letter-spacing:0.02em;}
     .hero p.sub{font-size:17px; max-width:440px;}
-    .hero .eyebrow{font-size:13px; letter-spacing:0.26em;}
-    .hero .eyebrow::before{width:32px;}
     .hero-actions{gap:14px;}
-    .hero-watermark{opacity:0.62;}
-    .hero-watermark .wm-logo{width:88px; height:88px;}
-    .hero-watermark .wm-title{font-size:17px;}
   }
 
   /* xl — large desktop 1280px+ */
@@ -384,8 +322,6 @@
     }
     .hero-main{align-items:flex-start; padding-top:12px;}
     .hero-content{max-width:100%;}
-    .hero-bottom-row{flex-direction:column; align-items:flex-start; gap:28px;}
-    .hero-watermark{align-self:center; opacity:0.45;}
     .hero-stats > div{padding-right:1.75rem;}
     .hero-stats > div + div{padding-left:1.75rem; padding-right:1.75rem;}
     .hero-mobile-image{display:none;}
@@ -630,7 +566,6 @@
     <div class="hero-main">
       <div class="hero-content">
         <div class="hero-copy">
-          <div class="eyebrow">Hand-Forged · Damascus Steel</div>
           <h1>The Edge<br><em>You Need.</em></h1>
           <p class="sub">Every blade is hammered, folded, and tempered by hand — built for the field, carried for a lifetime.</p>
           <div class="hero-actions">
@@ -645,15 +580,6 @@
         <div><div class="num">100%</div><div class="label">Hand Forged</div></div>
         <div><div class="num">14</div><div class="label">Day Returns</div></div>
         <div><div class="num">∞</div><div class="label">Custom Builds</div></div>
-      </div>
-      <div class="hero-watermark" aria-hidden="true">
-        <div class="wm-logo">
-          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=904,fit=crop/tSVCJwYZVzn37Df8/geometric-markhor-logo-for-haus-of-blades-3tXOSrGIIbfVFzok.png" alt="">
-        </div>
-        <div class="wm-text">
-          <span class="wm-title">Haus Of Blades</span>
-          <span class="wm-sub">Hunting Knives &amp; More</span>
-        </div>
       </div>
     </div>
   </div>
