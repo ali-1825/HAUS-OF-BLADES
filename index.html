@@ -117,63 +117,24 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    background:
-      radial-gradient(ellipse at 15% 40%, rgba(184,70,31,0.14), transparent 50%),
-      radial-gradient(ellipse at 85% 20%, rgba(216,92,46,0.08), transparent 40%),
-      var(--coal);
+    background-color:var(--coal);
+    background-image:
+      linear-gradient(90deg, rgba(20,18,16,0.96) 0%, rgba(20,18,16,0.90) 32%, rgba(20,18,16,0.55) 52%, rgba(20,18,16,0.20) 72%, transparent 100%),
+      linear-gradient(180deg, rgba(20,18,16,0.35) 0%, transparent 40%, rgba(20,18,16,0.75) 100%),
+      url('assets/hero-bg.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center right;
     overflow:hidden;
   }
-  .hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:
-      linear-gradient(90deg, var(--coal) 0%, rgba(20,18,16,0.92) 38%, rgba(20,18,16,0.55) 62%, transparent 100%);
-    pointer-events:none;
-    z-index:1;
-  }
-  .hero-layout{
+  .hero-inner{
     position:relative; z-index:2;
-    display:grid;
-    grid-template-columns:minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap:clamp(32px, 5vw, 72px);
-    align-items:center;
-    padding:120px 32px 100px;
-    max-width:1180px;
-    margin:0 auto;
+    padding:120px 32px 80px;
     width:100%;
   }
   .hero-copy{
     text-align:left;
     max-width:560px;
-  }
-  .hero-visual{
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-  }
-  .hero-image-frame{
-    position:relative;
-    width:100%;
-    max-width:520px;
-    border:1px solid var(--line);
-    background:var(--coal-2);
-    box-shadow:0 24px 60px rgba(0,0,0,0.45);
-  }
-  .hero-image-frame::before{
-    content:'';
-    position:absolute;
-    top:14px; left:14px; right:-14px; bottom:-14px;
-    border:1px solid rgba(184,70,31,0.55);
-    z-index:-1;
-    pointer-events:none;
-  }
-  .hero-image-frame img{
-    width:100%;
-    height:clamp(320px, 42vw, 580px);
-    object-fit:cover;
-    object-position:center;
-    display:block;
-    filter:saturate(0.95) contrast(1.06);
   }
   .eyebrow{
     font-size:13px; letter-spacing:0.35em; text-transform:uppercase;
@@ -339,8 +300,7 @@
 
   /* Tablet */
   @media (max-width: 1024px){
-    .hero-layout{gap:40px; padding-top:100px;}
-    .hero-image-frame{max-width:440px;}
+    .hero{background-position:72% center;}
     .grid-3{grid-template-columns:repeat(2, 1fr); gap:22px;}
     .detail-grid{grid-template-columns:1fr; gap:36px; padding:28px;}
     .detail-media img{height:360px;}
@@ -362,18 +322,14 @@
     .craft-grid, .contact-grid{grid-template-columns:1fr; gap:36px;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:28px;}
     .hero{
-      min-height:auto;
+      min-height:min(88vh, 760px);
+      background-image:
+        linear-gradient(180deg, rgba(20,18,16,0.92) 0%, rgba(20,18,16,0.72) 45%, rgba(20,18,16,0.55) 100%),
+        url('assets/hero-bg.png');
+      background-position:center 30%;
     }
-    .hero-layout{
-      grid-template-columns:1fr;
-      gap:40px;
-      padding:100px 24px 32px;
-    }
+    .hero-inner{padding:100px 24px 32px;}
     .hero-copy{max-width:none;}
-    .hero-visual{justify-content:center;}
-    .hero-image-frame{max-width:100%; margin:0 auto;}
-    .hero-image-frame::before{right:-10px; bottom:-10px; top:10px; left:10px;}
-    .hero-image-frame img{height:clamp(260px, 55vw, 380px);}
     .hero-stats{
       padding:0 24px 48px;
       justify-content:space-around;
@@ -402,18 +358,17 @@
     section{padding:56px 0;}
     .section-head{margin-bottom:32px;}
     .section-head p{font-size:16px;}
-    .hero{min-height:auto;}
-    .hero::before{
-      background:linear-gradient(180deg, var(--coal) 0%, rgba(20,18,16,0.88) 55%, rgba(20,18,16,0.75) 100%);
+    .hero{
+      min-height:min(92vh, 680px);
+      background-position:center 25%;
     }
-    .hero-layout{padding:88px 18px 28px; gap:32px;}
+    .hero-inner{padding:88px 18px 28px;}
     .hero h1{font-size:clamp(48px, 14vw, 72px);}
     .hero p.sub{font-size:17px; margin:20px 0 32px;}
     .eyebrow{font-size:12px; letter-spacing:0.22em; gap:10px;}
     .eyebrow::before{width:28px;}
     .hero-actions{flex-direction:column;}
     .hero-actions .btn{width:100%; max-width:320px; justify-content:center;}
-    .hero-image-frame img{height:clamp(220px, 62vw, 320px);}
     .hero-stats{padding:0 18px 40px; gap:20px;}
     .hero-stats .num{font-size:28px;}
     .cat-card .img-box{height:220px;}
@@ -464,7 +419,7 @@
 </header>
 
 <section class="hero">
-  <div class="hero-layout">
+  <div class="wrap hero-inner">
     <div class="hero-copy">
       <div class="eyebrow">Hand-Forged · Damascus Steel</div>
       <h1>The Edge<br><em>You Need.</em></h1>
@@ -474,13 +429,8 @@
         <a href="#craft" class="btn btn-ghost">Our Craft</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-image-frame">
-        <img src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000064a471fa89968bf744b487d8&ts=495638&p=fs&cid=1&sig=1aba90213fe8135779db611d828d0695750000c5f6a2aeb08a803c2cdb7817f7&v=0" data-local="assets/hero-blade.jpg" alt="Hand-forged Damascus steel blade by Haus Of Blades">
-      </div>
-    </div>
   </div>
-  <div class="hero-stats">
+  <div class="wrap hero-stats">
     <div><div class="num">100%</div><div class="label">Hand Forged</div></div>
     <div><div class="num">14</div><div class="label">Day Returns</div></div>
     <div><div class="num">∞</div><div class="label">Custom Builds</div></div>
@@ -648,18 +598,6 @@
   const mobileLinks = document.querySelectorAll('.mobile-nav a');
   const form = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
-  const heroImg = document.querySelector('.hero-image-frame img');
-
-  if (heroImg) {
-    heroImg.addEventListener('error', function onHeroImgError() {
-      const localSrc = heroImg.dataset.local;
-      if (localSrc && !heroImg.src.endsWith(localSrc)) {
-        heroImg.src = localSrc;
-        return;
-      }
-      heroImg.removeEventListener('error', onHeroImgError);
-    });
-  }
 
   if (menuButton) {
     menuButton.addEventListener('click', () => {
