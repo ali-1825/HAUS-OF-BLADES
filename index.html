@@ -846,53 +846,51 @@
   }
   .contact-form-wrap,
   .signup-deals-wrap{width:100%;}
-  .signup-deals-wrap .promo-box{
-    height:auto;
-    min-height:100%;
-    text-align:center;
-    align-items:center;
-  }
-  .signup-deals-wrap .promo-box .eyebrow{
-    justify-content:center;
-    font-family:'Cinzel', serif;
-    font-size:clamp(22px, 3vw, 32px);
-    letter-spacing:0.14em;
-    margin-bottom:14px;
-  }
-  .signup-deals-wrap .promo-box .eyebrow::before{display:none;}
-  .signup-deals-wrap .promo-box h3{
-    font-size:clamp(16px, 1.8vw, 20px);
-    letter-spacing:0.1em;
-    font-weight:400;
-    color:var(--bone-dim);
-    margin-bottom:18px;
-    line-height:1.45;
-  }
-  .signup-deals-wrap .code-chip{margin-bottom:28px;}
-  .signup-deals-wrap form{width:100%; text-align:left;}
-  .signup-deals-wrap .field{margin-bottom:16px;}
-  .signup-deals-wrap .btn{width:100%;}
-  .contact-form-wrap .section-head{
+  .contact-form-wrap .section-head,
+  .signup-deals-wrap .section-head{
     text-align:center;
     max-width:none;
     margin-bottom:clamp(28px, 4vw, 40px);
   }
-  .contact-form-wrap .section-head .eyebrow{
+  .contact-form-wrap .section-head .eyebrow,
+  .signup-deals-wrap .section-head .eyebrow{
     justify-content:center;
     font-family:'Cinzel', serif;
     font-size:clamp(26px, 3.8vw, 42px);
     letter-spacing:0.16em;
     margin-bottom:clamp(10px, 1.5vw, 14px);
   }
-  .contact-form-wrap .section-head .eyebrow::before{display:none;}
-  .contact-form-wrap .section-head h2{
+  .contact-form-wrap .section-head .eyebrow::before,
+  .signup-deals-wrap .section-head .eyebrow::before{display:none;}
+  .contact-form-wrap .section-head h2,
+  .signup-deals-wrap .section-head h2{
     font-size:clamp(18px, 2.2vw, 24px);
     letter-spacing:0.1em;
     line-height:1.35;
     font-weight:400;
     color:var(--bone-dim);
   }
-  .contact-form-wrap form{width:100%;}
+  .signup-deals-wrap .signup-code{
+    margin-top:16px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(16px, 1.6vw, 19px);
+    line-height:1.6;
+    color:var(--bone-dim);
+    font-style:italic;
+  }
+  .signup-deals-wrap .code-chip{
+    display:inline-block;
+    margin-top:10px;
+    border:1px dashed var(--gold);
+    color:var(--gold-bright);
+    padding:10px 18px;
+    font-family:'Cinzel', serif;
+    letter-spacing:0.14em;
+    font-size:14px;
+    font-style:normal;
+  }
+  .contact-form-wrap form,
+  .signup-deals-wrap form{width:100%;}
   .field{margin-bottom:18px;}
   .field--compact{margin-bottom:12px;}
   .form-status{margin-top:16px; color:var(--gold); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600;}
@@ -1267,19 +1265,23 @@
       </form>
     </div>
     <div class="signup-deals-wrap">
-      <div class="promo-box">
+      <div class="section-head section-head--tight">
         <div class="eyebrow">Sign Up For Exclusive Deals</div>
-        <h3>New Customer Get 10% Off First Order</h3>
-        <div class="code-chip">Use Code: Callofthewild</div>
-        <form id="signupForm">
-          <div class="field">
-            <label for="signup-contact">Your Name or Email Address</label>
-            <input id="signup-contact" type="text" name="contact" placeholder="Your name or email address" required autocomplete="email">
-          </div>
-          <button class="btn btn-primary" type="submit">Sign Up</button>
-          <p id="signupStatus" class="form-status"></p>
-        </form>
+        <h2>New Customer Get 10% Off<br>First Order</h2>
+        <p class="signup-code">Use Code:<br><span class="code-chip">Callofthewild</span></p>
       </div>
+      <form id="signupForm">
+        <div class="field">
+          <label for="signup-name">Your Name</label>
+          <input id="signup-name" type="text" name="name" placeholder="John Smith" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="signup-email">Email Address</label>
+          <input id="signup-email" type="email" name="email" placeholder="you@email.com" required autocomplete="email">
+        </div>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+        <p id="signupStatus" class="form-status"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -1431,14 +1433,15 @@
   if (signupForm && signupStatus) {
     signupForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      const contact = signupForm.querySelector('input[name="contact"]').value.trim();
+      const name = signupForm.querySelector('input[name="name"]').value.trim();
+      const email = signupForm.querySelector('input[name="email"]').value.trim();
 
-      if (!contact) {
-        signupStatus.textContent = 'Please enter your name or email address.';
+      if (!name || !email) {
+        signupStatus.textContent = 'Please enter your name and email address.';
         return;
       }
 
-      signupStatus.textContent = 'You\'re signed up! Use code Callofthewild at checkout.';
+      signupStatus.textContent = `Thanks, ${name}! Use code Callofthewild at checkout.`;
       signupForm.reset();
     });
   }
