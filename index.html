@@ -837,14 +837,41 @@
 
   /* Contact / newsletter */
   .contact-grid{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    max-width:560px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:start;
+    gap:clamp(32px, 5vw, 56px);
+    max-width:960px;
     margin:0 auto;
-    gap:0;
   }
-  .contact-form-wrap{width:100%;}
+  .contact-form-wrap,
+  .signup-deals-wrap{width:100%;}
+  .signup-deals-wrap .promo-box{
+    height:auto;
+    min-height:100%;
+    text-align:center;
+    align-items:center;
+  }
+  .signup-deals-wrap .promo-box .eyebrow{
+    justify-content:center;
+    font-family:'Cinzel', serif;
+    font-size:clamp(22px, 3vw, 32px);
+    letter-spacing:0.14em;
+    margin-bottom:14px;
+  }
+  .signup-deals-wrap .promo-box .eyebrow::before{display:none;}
+  .signup-deals-wrap .promo-box h3{
+    font-size:clamp(16px, 1.8vw, 20px);
+    letter-spacing:0.1em;
+    font-weight:400;
+    color:var(--bone-dim);
+    margin-bottom:18px;
+    line-height:1.45;
+  }
+  .signup-deals-wrap .code-chip{margin-bottom:28px;}
+  .signup-deals-wrap form{width:100%; text-align:left;}
+  .signup-deals-wrap .field{margin-bottom:16px;}
+  .signup-deals-wrap .btn{width:100%;}
   .contact-form-wrap .section-head{
     text-align:center;
     max-width:none;
@@ -926,7 +953,7 @@
     .detail-grid{grid-template-columns:1fr; gap:36px; padding:28px;}
     .detail-media img{height:360px;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:32px;}
-    .contact-grid{gap:48px;}
+    .contact-grid{grid-template-columns:1fr; gap:40px; max-width:560px;}
   }
 
   /* Mobile nav */
@@ -942,7 +969,7 @@
     .grid-3{grid-template-columns:1fr;}
     .product-grid{grid-template-columns:1fr; gap:18px;}
     .category-grid{grid-template-columns:1fr; gap:18px;}
-    .contact-grid{max-width:100%;}
+    .contact-grid{max-width:100%; gap:36px;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:28px;}
     .trust{grid-template-columns:1fr; justify-items:center; text-align:center;}
     .trust div{justify-content:center; max-width:320px;}
@@ -1239,6 +1266,21 @@
         <p id="formStatus" class="form-status"></p>
       </form>
     </div>
+    <div class="signup-deals-wrap">
+      <div class="promo-box">
+        <div class="eyebrow">Sign Up For Exclusive Deals</div>
+        <h3>New Customer Get 10% Off First Order</h3>
+        <div class="code-chip">Use Code: Callofthewild</div>
+        <form id="signupForm">
+          <div class="field">
+            <label for="signup-contact">Your Name or Email Address</label>
+            <input id="signup-contact" type="text" name="contact" placeholder="Your name or email address" required autocomplete="email">
+          </div>
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+          <p id="signupStatus" class="form-status"></p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1292,6 +1334,8 @@
   const mobileLinks = document.querySelectorAll('.mobile-nav a');
   const form = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
+  const signupForm = document.getElementById('signupForm');
+  const signupStatus = document.getElementById('signupStatus');
 
   const markLoaded = (img) => {
     if (!img) return;
@@ -1381,6 +1425,21 @@
 
       formStatus.textContent = `Thanks, ${name}! We'll be in touch shortly.`;
       form.reset();
+    });
+  }
+
+  if (signupForm && signupStatus) {
+    signupForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const contact = signupForm.querySelector('input[name="contact"]').value.trim();
+
+      if (!contact) {
+        signupStatus.textContent = 'Please enter your name or email address.';
+        return;
+      }
+
+      signupStatus.textContent = 'You\'re signed up! Use code Callofthewild at checkout.';
+      signupForm.reset();
     });
   }
 </script>
