@@ -21,7 +21,7 @@
     --radius: 2px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
     background:var(--coal);
     color:var(--bone);
@@ -29,6 +29,7 @@
     font-weight:400;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
   h1,h2,h3,.display{
     font-family:'Bebas Neue', sans-serif;
@@ -76,12 +77,13 @@
     letter-spacing:0.08em;
   }
   .brand .mark{
-    width:30px; height:30px;
-    border:2px solid var(--ember);
-    transform:rotate(45deg);
+    width:34px; height:34px;
     display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:rgba(238,230,214,0.04);
   }
-  .brand .mark span{transform:rotate(-45deg); font-size:13px; color:var(--ember-bright); font-family:'Bebas Neue',sans-serif;}
+  .brand .mark img{width:100%; height:100%; object-fit:cover; display:block;}
   nav ul{list-style:none; display:flex; gap:34px;}
   nav a{
     font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
@@ -283,14 +285,95 @@
   .foot-bottom a{color:var(--steel);}
   .foot-bottom a:hover{color:var(--ember-bright);}
 
+  /* Tablet */
+  @media (max-width: 1024px){
+    .grid-3{grid-template-columns:repeat(2, 1fr); gap:22px;}
+    .detail-grid{grid-template-columns:1fr; gap:36px; padding:28px;}
+    .detail-media img{height:360px;}
+    .foot-grid{grid-template-columns:1fr 1fr; gap:32px;}
+    .craft-grid{gap:48px;}
+    .contact-grid{gap:48px;}
+  }
+
+  /* Mobile */
   @media (max-width: 860px){
     nav ul, .nav-cta{display:none;}
     .menu-toggle{display:block;}
+    .wrap{padding:0 24px;}
+    .nav-row{padding:16px 24px;}
+    .mobile-nav{padding:0 24px 24px;}
+    section{padding:72px 0;}
+    .section-head{margin-bottom:40px;}
     .grid-3{grid-template-columns:1fr;}
     .craft-grid, .contact-grid{grid-template-columns:1fr; gap:36px;}
-    .foot-grid{grid-template-columns:1fr 1fr;}
-    .hero-stats{position:static; margin-top:50px; padding:0 32px;}
-    .hero-inner{padding-bottom:40px;}
+    .foot-grid{grid-template-columns:1fr 1fr; gap:28px;}
+    .hero{
+      flex-direction:column;
+      justify-content:flex-end;
+      align-items:stretch;
+      min-height:min(88vh, 720px);
+    }
+    .hero-inner{padding:100px 24px 32px;}
+    .hero-stats{
+      position:static;
+      margin-top:0;
+      padding:0 24px 48px;
+      width:100%;
+      justify-content:space-around;
+      flex-wrap:wrap;
+      gap:24px 32px;
+    }
+    .hero-stats div{text-align:center; min-width:80px;}
+    .trust{justify-content:center; text-align:center;}
+    .trust div{justify-content:center; width:100%; max-width:320px;}
+    .craft-media .frame{right:-12px; bottom:-12px; top:12px; left:12px;}
+    .craft-media img{height:340px;}
+    .craft-copy p{max-width:none;}
+    .promo-box{padding:28px;}
+    .detail-grid{padding:24px;}
+    .detail-media img{height:280px;}
+    .detail-actions .btn{flex:1 1 auto; justify-content:center;}
+  }
+
+  /* Small phones */
+  @media (max-width: 600px){
+    .wrap{padding:0 18px;}
+    .nav-row{padding:14px 18px;}
+    .mobile-nav{padding:0 18px 20px;}
+    .brand{font-size:22px; gap:8px;}
+    .brand .mark{width:30px; height:30px;}
+    section{padding:56px 0;}
+    .section-head{margin-bottom:32px;}
+    .section-head p{font-size:16px;}
+    .hero{min-height:auto;}
+    .hero-inner{padding:88px 18px 28px;}
+    .hero h1{font-size:clamp(48px, 14vw, 72px);}
+    .hero p.sub{font-size:17px; margin:20px 0 32px;}
+    .eyebrow{font-size:12px; letter-spacing:0.22em; gap:10px;}
+    .eyebrow::before{width:28px;}
+    .hero-actions{flex-direction:column;}
+    .hero-actions .btn{width:100%; justify-content:center;}
+    .hero-stats{padding:0 18px 40px; gap:20px;}
+    .hero-stats .num{font-size:28px;}
+    .cat-card .img-box{height:220px;}
+    .cat-card h3{font-size:22px;}
+    .craft-media img{height:280px;}
+    .craft-media .frame{display:none;}
+    .promo-box h3{font-size:26px;}
+    .foot-grid{grid-template-columns:1fr; gap:32px;}
+    .foot-bottom{flex-direction:column; align-items:flex-start; gap:8px;}
+    .detail-actions{flex-direction:column;}
+    .detail-actions .btn{width:100%;}
+    .spec-list li{font-size:13px; flex-wrap:wrap;}
+    .btn{padding:14px 24px;}
+  }
+
+  /* Extra-small */
+  @media (max-width: 380px){
+    .brand{font-size:19px;}
+    .hero-stats{justify-content:center;}
+    .hero-stats div{min-width:70px;}
+    .trust div{font-size:12px;}
   }
 </style>
 </head>
@@ -298,7 +381,7 @@
 
 <header id="siteHeader">
   <div class="nav-row">
-    <a href="#top" class="brand"><span class="mark"><span>H</span></span> Haus Of Blades</a>
+    <a href="#top" class="brand"><span class="mark"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=904,fit=crop/tSVCJwYZVzn37Df8/geometric-markhor-logo-for-haus-of-blades-3tXOSrGIIbfVFzok.png" alt="Haus Of Blades logo"></span> Haus Of Blades</a>
     <nav>
       <ul>
         <li><a href="#shop">Shop</a></li>
