@@ -103,21 +103,19 @@
   .nav-row .nav-cta,
   .nav-row .menu-toggle{justify-self:end;}
   .brand{
-    display:flex; align-items:center; gap:12px;
-    font-family:'Cinzel', serif;
-    font-size:22px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--bone);
+    display:block;
+    line-height:0;
+    flex-shrink:0;
   }
-  .brand .mark{
-    width:36px; height:36px;
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-    border:1px solid var(--line);
-    background:rgba(197,160,89,0.06);
+  .brand img{
+    display:block;
+    height:clamp(30px, 4.2vw, 42px);
+    width:auto;
+    max-width:min(320px, 52vw);
+    object-fit:contain;
+    object-position:left center;
+    mix-blend-mode:lighten;
   }
-  .brand .mark img{width:100%; height:100%; object-fit:cover; display:block;}
   nav ul{list-style:none; display:flex; gap:34px;}
   nav a{
     font-size:11px; letter-spacing:0.2em; text-transform:uppercase;
@@ -741,6 +739,11 @@
   }
   .foot-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:clamp(28px, 4vw, 40px); margin-bottom:clamp(36px, 5vw, 52px);}
   .foot-brand .brand{margin-bottom:12px;}
+  .foot-brand .brand img{
+    height:clamp(32px, 3.5vw, 44px);
+    max-width:300px;
+    mix-blend-mode:normal;
+  }
   .foot-brand p{color:var(--steel); font-size:14px; line-height:1.6; max-width:300px;}
   .foot-col h4{font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; font-weight:600;}
   .foot-col ul{list-style:none; display:flex; flex-direction:column; gap:11px;}
@@ -792,8 +795,7 @@
   /* Small phones */
   @media (max-width: 600px){
     .top-bar{font-size:9px; letter-spacing:0.14em; padding:10px 12px;}
-    .brand{font-size:18px; gap:8px;}
-    .brand .mark{width:30px; height:30px;}
+    .brand img{height:28px; max-width:min(240px, 58vw);}
     .section-head p{font-size:15px;}
     .hero-actions{flex-direction:column; align-items:center;}
     .hero-actions .btn{width:100%; max-width:280px; min-height:48px;}
@@ -818,7 +820,7 @@
 
   /* Extra-small */
   @media (max-width: 380px){
-    .brand{font-size:19px;}
+    .brand img{height:26px; max-width:min(210px, 62vw);}
     .hero h1{font-size:1.5rem;}
     .trust div{font-size:11px;}
   }
@@ -830,7 +832,7 @@
 
 <header id="siteHeader">
   <div class="nav-row">
-    <a href="#top" class="brand"><span class="mark"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=904,fit=crop/tSVCJwYZVzn37Df8/geometric-markhor-logo-for-haus-of-blades-3tXOSrGIIbfVFzok.png" alt="Haus Of Blades logo"></span> Haus Of Blades</a>
+    <a href="#top" class="brand"><img src="assets/brand-logo.png" alt="Haus Of Blades"></a>
     <nav>
       <ul>
         <li><a href="#shop">Shop</a></li>
@@ -1066,7 +1068,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#top" class="brand"><span class="mark"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=904,fit=crop/tSVCJwYZVzn37Df8/geometric-markhor-logo-for-haus-of-blades-3tXOSrGIIbfVFzok.png" alt="Haus Of Blades logo"></span> Haus Of Blades</a>
+        <a href="#top" class="brand"><img src="assets/brand-logo.png" alt="Haus Of Blades"></a>
         <p>Hand-forged Damascus steel knives, axes, and outdoor gear — built to be carried, not just collected.</p>
       </div>
       <div class="foot-col">
