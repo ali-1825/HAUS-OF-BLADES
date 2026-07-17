@@ -352,7 +352,64 @@
   .eyebrow::before{content:''; width:32px; height:1px; background:var(--ember-bright); flex-shrink:0;}
   .section-head p{color:var(--bone-dim); font-family:'Source Serif 4', serif; font-size:clamp(15px, 1.5vw, 17px); line-height:1.65; margin-top:14px; max-width:540px;}
   .section-head--tight{margin-bottom:clamp(24px, 3vw, 32px);}
+  .section-head--center{text-align:center; max-width:none; margin-inline:auto;}
+  .section-head--center h2{font-size:clamp(28px, 4vw, 44px);}
   .section-trust{padding:0;}
+
+  /* Shop by category */
+  .shop-categories{
+    padding-top:clamp(48px, 7vw, 72px);
+    padding-bottom:clamp(24px, 4vw, 40px);
+  }
+  .category-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .category-box{
+    border:1px solid var(--line);
+    background:var(--coal-2);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .category-box:hover{border-color:var(--ember); transform:translateY(-4px);}
+  .category-box__media{
+    position:relative;
+    height:clamp(200px, 24vw, 280px);
+    overflow:hidden;
+    background:var(--coal);
+    border-bottom:1px solid var(--line);
+  }
+  .category-box__media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .5s ease;
+    filter:saturate(0.92) contrast(1.05);
+  }
+  .category-box:hover .category-box__media img{transform:scale(1.06);}
+  .category-box__body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    padding:24px 20px 28px;
+    text-align:center;
+  }
+  .category-box h3{
+    font-size:clamp(24px, 2.4vw, 30px);
+    line-height:1;
+    margin:0;
+  }
+  .btn-sm{
+    min-height:40px;
+    padding:0 18px;
+    font-size:11px;
+    letter-spacing:0.12em;
+  }
 
   /* Categories / products */
   .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
@@ -479,6 +536,7 @@
   /* Tablet */
   @media (max-width: 1024px){
     .trust{grid-template-columns:repeat(2, 1fr);}
+    .category-grid{grid-template-columns:repeat(2, 1fr); gap:20px;}
     .grid-3{grid-template-columns:repeat(2, 1fr); gap:22px;}
     .detail-grid{grid-template-columns:1fr; gap:36px; padding:28px;}
     .detail-media img{height:360px;}
@@ -498,6 +556,7 @@
     section{padding:clamp(48px, 10vw, 72px) 0;}
     .section-head{margin-bottom:clamp(28px, 5vw, 40px);}
     .grid-3{grid-template-columns:1fr;}
+    .category-grid{grid-template-columns:1fr; gap:18px;}
     .craft-grid, .contact-grid{grid-template-columns:1fr; gap:36px;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:28px;}
     .trust{grid-template-columns:1fr; justify-items:center; text-align:center;}
@@ -597,6 +656,46 @@
 </section>
 
 <div class="damascus-divider"></div>
+
+<section class="shop-categories" id="shop-by-category">
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      <h2>Shop By Category</h2>
+    </div>
+    <div class="category-grid">
+      <article class="category-box">
+        <div class="category-box__media">
+          <!-- Replace src below with your Knives category image -->
+          <img src="https://cdn.zyrosite.com/cdn-ecommerce/store_01KRAP9S4FHY8FPMK4VDC77J93/assets/f657fff7-ceea-4244-b68b-84925430b696.png" alt="Knives">
+        </div>
+        <div class="category-box__body">
+          <h3>Knives</h3>
+          <a href="#shop" class="btn btn-ghost btn-sm">Collection</a>
+        </div>
+      </article>
+      <article class="category-box">
+        <div class="category-box__media">
+          <!-- Replace src below with your Axes category image -->
+          <img src="https://u-mercari-images.mercdn.net/photos/m48953318770_1.jpg?width=1280&quality=75&_=1784240581" alt="Axes">
+        </div>
+        <div class="category-box__body">
+          <h3>Axes</h3>
+          <a href="#shop" class="btn btn-ghost btn-sm">Collection</a>
+        </div>
+      </article>
+      <article class="category-box">
+        <div class="category-box__media">
+          <!-- Replace src below with your Pizza Cutter category image -->
+          <img src="https://u-mercari-images.mercdn.net/photos/m46322494102_1.jpg?width=1280&quality=75&_=1784287239" alt="Pizza Cutters">
+        </div>
+        <div class="category-box__body">
+          <h3>Pizza Cutters</h3>
+          <a href="#shop" class="btn btn-ghost btn-sm">Collection</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section id="shop">
   <div class="wrap">
