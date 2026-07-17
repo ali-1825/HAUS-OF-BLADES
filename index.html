@@ -190,7 +190,7 @@
     flex-direction:column;
     align-items:flex-start;
     justify-content:flex-start;
-    gap:clamp(28px, 4vh, 48px);
+    gap:clamp(16px, 2vh, 24px);
     min-height:100vh;
     min-height:100svh;
   }
@@ -253,29 +253,15 @@
     border-width:1px;
     border-style:solid;
   }
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:10px;
-    padding:14px 28px;
-    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; font-weight:600;
-    border-radius:var(--radius);
-    transition:all .25s ease;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  .btn-primary{background:var(--gold); color:var(--coal); border:1px solid var(--gold);}
-  .btn-primary:hover{background:var(--gold-bright); border-color:var(--gold-bright); transform:translateY(-2px); box-shadow:0 8px 24px rgba(197,160,89,0.18);}
-  .btn-ghost{border:1px solid rgba(197,160,89,0.45); color:var(--gold);}
-  .btn-ghost:hover{border-color:var(--gold-bright); color:var(--gold-bright); background:rgba(197,160,89,0.06);}
-
-  .hero-bottom-row{
-    width:100%;
-    margin-top:auto;
-    padding-top:clamp(12px, 2vh, 24px);
-  }
   .hero-stats{
     display:flex;
     align-items:flex-start;
     gap:0;
+    margin-top:clamp(20px, 3vh, 32px);
+    padding-top:clamp(16px, 2.5vh, 24px);
+    border-top:1px solid rgba(197,160,89,0.18);
+    width:100%;
+    max-width:420px;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
@@ -309,6 +295,19 @@
     line-height:1.35;
     font-weight:500;
   }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:14px 28px;
+    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; font-weight:600;
+    border-radius:var(--radius);
+    transition:all .25s ease;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--gold); color:var(--coal); border:1px solid var(--gold);}
+  .btn-primary:hover{background:var(--gold-bright); border-color:var(--gold-bright); transform:translateY(-2px); box-shadow:0 8px 24px rgba(197,160,89,0.18);}
+  .btn-ghost{border:1px solid rgba(197,160,89,0.45); color:var(--gold);}
+  .btn-ghost:hover{border-color:var(--gold-bright); color:var(--gold-bright); background:rgba(197,160,89,0.06);}
 
   @media (min-width: 640px){
     .hero h1{font-size:2rem;}
@@ -708,14 +707,11 @@
             <a href="#shop" class="btn btn-primary">Shop The Collection</a>
             <a href="#craft" class="btn btn-ghost">Our Craft</a>
           </div>
+          <div class="hero-stats">
+            <div><div class="num">100%</div><div class="label">Hand Forged</div></div>
+            <div><div class="num">14</div><div class="label">Day Returns</div></div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="hero-bottom-row">
-      <div class="hero-stats">
-        <div><div class="num">100%</div><div class="label">Hand Forged</div></div>
-        <div><div class="num">14</div><div class="label">Day Returns</div></div>
-        <div><div class="num">∞</div><div class="label">Custom Builds</div></div>
       </div>
     </div>
   </div>
