@@ -510,26 +510,103 @@
   .detail-copy .eyebrow{margin-bottom:14px;}
 
 
-  /* Craft / about split */
-  .craft{
-    background:linear-gradient(180deg, rgba(17,16,14,0.85), rgba(8,8,7,0.95));
+  /* The Haus Of Blades Standard */
+  .standard{
+    padding:0;
     border-top:1px solid var(--line-soft);
     border-bottom:1px solid var(--line-soft);
+    background:#0a0908;
   }
-  .craft-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
-  .craft-media{position:relative;}
-  .craft-media img{width:100%; height:460px; object-fit:cover; filter:saturate(0.88) contrast(1.05);}
-  .craft-media .frame{
-    position:absolute; top:18px; left:18px; right:-18px; bottom:-18px;
-    border:1px solid var(--gold); z-index:-1;
+  .standard-grid{
+    display:grid;
+    grid-template-columns:minmax(260px, 41%) 1fr;
+    min-height:420px;
   }
-  .craft-copy .eyebrow{margin-bottom:14px;}
-  .craft-copy h2{font-size:clamp(28px, 3.8vw, 42px); margin-bottom:18px; line-height:1.08; max-width:520px; letter-spacing:0.14em;}
-  .craft-copy p{color:var(--bone-dim); font-family:'Cormorant Garamond', serif; font-size:clamp(17px, 1.6vw, 20px); line-height:1.7; margin-bottom:16px; max-width:520px;}
-  .craft-list{margin-top:24px; display:flex; flex-direction:column; gap:14px;}
-  .craft-list li{list-style:none; display:flex; gap:12px; align-items:flex-start; font-size:13px; line-height:1.6; color:var(--steel-light); letter-spacing:0.04em;}
-  .craft-copy .btn{margin-top:24px;}
-  .craft-list .dot{width:6px; height:6px; background:var(--gold); margin-top:8px; flex-shrink:0; transform:rotate(45deg);}
+  .standard-media{
+    overflow:hidden;
+    min-height:360px;
+    background:#0a0908;
+  }
+  .standard-media img{
+    width:100%;
+    height:100%;
+    min-height:360px;
+    object-fit:cover;
+    object-position:18% center;
+    display:block;
+  }
+  .standard-copy{
+    padding:clamp(40px, 5vw, 68px) clamp(28px, 4vw, 52px);
+    background:
+      radial-gradient(circle at 15% 15%, rgba(197,160,89,0.05), transparent 42%),
+      linear-gradient(180deg, rgba(17,16,14,0.98), rgba(8,8,7,1));
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .standard-kicker{
+    font-size:10px;
+    letter-spacing:0.34em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .standard-copy h2{
+    font-size:clamp(22px, 2.6vw, 32px);
+    letter-spacing:0.18em;
+    text-align:center;
+    margin-bottom:clamp(32px, 4vw, 48px);
+    line-height:1.12;
+    max-width:none;
+  }
+  .standard-features{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:clamp(18px, 2.5vw, 28px);
+  }
+  .standard-feature{text-align:center;}
+  .standard-feature .icon{
+    width:46px;
+    height:46px;
+    margin:0 auto 14px;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .standard-feature .icon svg{width:100%; height:100%;}
+  .standard-feature h3{
+    font-family:'Montserrat', sans-serif;
+    font-size:clamp(8px, 0.75vw, 9px);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+    line-height:1.45;
+    font-weight:600;
+  }
+  .standard-feature p{
+    font-family:'Montserrat', sans-serif;
+    font-size:clamp(10px, 0.95vw, 11px);
+    line-height:1.65;
+    color:var(--steel-light);
+    letter-spacing:0.01em;
+    max-width:190px;
+    margin:0 auto;
+  }
+
+  @media (max-width: 1024px){
+    .standard-grid{grid-template-columns:1fr;}
+    .standard-media{min-height:280px;}
+    .standard-media img{min-height:280px; object-position:center 35%;}
+    .standard-features{grid-template-columns:repeat(2, 1fr); gap:28px 24px;}
+  }
+  @media (max-width: 600px){
+    .standard-features{grid-template-columns:1fr; gap:24px;}
+    .standard-feature p{max-width:280px;}
+  }
 
   /* Trust strip */
   .trust{
@@ -602,7 +679,6 @@
     .detail-grid{grid-template-columns:1fr; gap:36px; padding:28px;}
     .detail-media img{height:360px;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:32px;}
-    .craft-grid{gap:48px;}
     .contact-grid{gap:48px;}
   }
 
@@ -618,13 +694,10 @@
     .section-head{margin-bottom:clamp(28px, 5vw, 40px);}
     .grid-3{grid-template-columns:1fr;}
     .category-grid{grid-template-columns:1fr; gap:18px;}
-    .craft-grid, .contact-grid{grid-template-columns:1fr; gap:36px;}
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
     .foot-grid{grid-template-columns:1fr 1fr; gap:28px;}
     .trust{grid-template-columns:1fr; justify-items:center; text-align:center;}
     .trust div{justify-content:center; max-width:320px;}
-    .craft-media .frame{right:-12px; bottom:-12px; top:12px; left:12px;}
-    .craft-media img{height:340px;}
-    .craft-copy h2, .craft-copy p{max-width:none;}
     .promo-box{padding:28px;}
     .detail-grid{padding:24px;}
     .detail-media img{height:280px;}
@@ -649,8 +722,6 @@
     .hero-stats > div{min-width:96px; text-align:center;}
     .cat-card .img-box{height:220px;}
     .cat-card h3{font-size:22px;}
-    .craft-media img{height:280px;}
-    .craft-media .frame{display:none;}
     .promo-box h3{font-size:26px;}
     .foot-grid{grid-template-columns:1fr; gap:32px;}
     .foot-bottom{flex-direction:column; align-items:flex-start; gap:8px;}
@@ -805,23 +876,56 @@
   </div>
 </section>
 
-<section class="craft" id="craft">
-  <div class="wrap craft-grid">
-    <div class="craft-media">
-      <div class="frame"></div>
-      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=904,fit=crop/tSVCJwYZVzn37Df8/geometric-markhor-logo-for-haus-of-blades-3tXOSrGIIbfVFzok.png" alt="Haus Of Blades logo">
+<section class="standard" id="craft">
+  <div class="standard-grid">
+    <div class="standard-media">
+      <img src="assets/craft-standard.png" alt="Blacksmith forging a blade with sparks flying">
     </div>
-    <div class="craft-copy">
-      <div class="eyebrow">Blades Born From Fire</div>
-      <h2>Steel Folded By Hand, Not By Machine.</h2>
-      <p>Our craft is rooted in Damascus steel — every blade is hand-forged using time-honored techniques that bring out its signature strength, beauty, and flowing pattern.</p>
-      <p>Every blade is shaped around your needs with a focus on fit, finish, and lasting performance.</p>
-      <ul class="craft-list">
-        <li><span class="dot"></span> Heated, folded, and tempered in small batches</li>
-        <li><span class="dot"></span> Full-tang construction on every blade</li>
-        <li><span class="dot"></span> Hand-finished details and premium handle materials</li>
-      </ul>
-      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+    <div class="standard-copy">
+      <p class="standard-kicker">Crafted With Purpose</p>
+      <h2>The Haus Of Blades Standard</h2>
+      <div class="standard-features">
+        <article class="standard-feature">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="24" cy="24" r="20"/>
+              <path d="M16 28c4-8 12-8 16 0M20 18c2-4 6-4 8 0"/>
+            </svg>
+          </div>
+          <h3>Hand Forged Damascus Steel</h3>
+          <p>Each blade is forged in-house using premium steels and traditional techniques.</p>
+        </article>
+        <article class="standard-feature">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="24" cy="24" r="20"/>
+              <path d="M24 10v28M14 16h20M14 32h20"/>
+            </svg>
+          </div>
+          <h3>Full Tang Construction</h3>
+          <p>Built for strength, balance, and a lifetime of hard use.</p>
+        </article>
+        <article class="standard-feature">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="24" cy="24" r="20"/>
+              <path d="M24 8l4 8 9 1-6.5 6.5 1.5 9-8-4.5-8 4.5 1.5-9L11 17l9-1 4-8z"/>
+            </svg>
+          </div>
+          <h3>Premium Materials</h3>
+          <p>Exotic hardwoods, stabilized handles, and high-end finishes—no shortcuts.</p>
+        </article>
+        <article class="standard-feature">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="24" cy="24" r="20"/>
+              <path d="M16 16l16 16M32 16L16 32"/>
+            </svg>
+          </div>
+          <h3>Artisan Workmanship</h3>
+          <p>Every detail is finished by hand. Every blade is unique.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
